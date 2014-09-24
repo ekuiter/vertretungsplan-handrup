@@ -4,7 +4,7 @@
   "moodleLoginUrl": "http://www.leoninum.org/moodle2/login/index.php",
   "moodleUsername": "username",
   "moodlePassword": "password",
-  "refreshEnabled": true,
+  "adminUsername": "username",
   "refreshInterval": 300,
   "cordova": { }
 }

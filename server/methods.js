@@ -37,5 +37,18 @@ Meteor.methods({
     if (!this.userId)
       throw new Meteor.Error(403, "Not logged in");
     Users.update({ session: this.userId }, { $set: { class: klass } });
+  },
+
+  refresh: function(enabled) {
+    if (!this.userId)
+      throw new Meteor.Error(403, "Not logged in");
+    if (!Users.findOne({ session: this.userId, username: Meteor.settings.adminUsername }))
+      throw new Meteor.Error(403, "Admin required");
+    if (enabled === undefined)
+      enabled = true;
+    if (enabled)
+      LessonController.startScheduling();
+    else
+      LessonController.stopScheduling();
   }
 });
