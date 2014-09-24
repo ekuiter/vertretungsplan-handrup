@@ -70,7 +70,7 @@ LessonController._processLessonsHtml = function(lessonsType, lessonsHtml) {
   var date = $(".svp-plandatum-heute, .svp-plandatum-morgen").text().trim();
   date = new Date(date.replace(/^(.*)(\d{2})\.(\d{2})\.(\d{4})$/, "$4-$3-$2"));
   var updated = $(".svp-uploaddatum").text().trim();
-  updated = new Date(updated.replace(/^(.*)(\d{2})\.(\d{2})\.(\d{4})(.*)(\d{2}):(\d{2})(.*)$/, "$4-$3-$2 $6:$7"));
+  updated = new Date(updated.replace(/^(.*)(\d{2})\.(\d{2})\.(\d{4})(.*)(\d{2}):(\d{2})(.*)$/, "$4-$3-$2 $6:$7 +0200"));
   var lastUpdated = LessonsUpdated.getProperty(lessonsType, "updated");
   if (lastUpdated && lastUpdated.getTime() === updated.getTime()) {
     console.log("No refresh needed. (Last updated: " + updated.toDateString() +
