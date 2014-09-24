@@ -29,6 +29,8 @@
       {{else}}
         {{#if klass}}
           <p class="alert alert-danger">Keine Vertretungsstunden für Klasse <strong>{{klass}}</strong>.</p>
+        {{else}}
+          {{> setClassAlert}}
         {{/if}}
       {{/if}}
       {{#if klass}}
@@ -38,6 +40,9 @@
         {{> grid collection=otherLessons}}
       </ul>
     {{else}}
+      {{#unless klass}}
+        {{> setClassAlert}}
+      {{/unless}}
       <div class="table-responsive overthrow">
         {{> reactiveTable collection=lessons settings=tableSettings}}
       </div>
@@ -48,17 +53,13 @@
   {{else}}
     <h3>Für diesen Tag gibt es (noch) keine Vertretungsstunden.</h3>
   {{/if}}
-  <hr />
-  <p>
-    Gib deine Klasse hier ein, damit deine Vertretungsstunden bevorzugt angezeigt werden.
-  </p>
-  <form class="class form-inline" role="form">
-    <div class="form-group">
-      <input type="text" class="form-control" id="class" value="{{klass}}" placeholder="Klasse">
-    </div>
-    <input type="submit" class="btn btn-primary" value="Speichern" />
-  </form>
   <p></p>
+</template>
+
+<template name="setClassAlert">
+  <p class="alert alert-info">
+    Du kannst deine <a href="{{pathFor 'setClass'}}">Klasse einstellen</a>, um deine Vertretungsstunden zu sehen.
+  </p>
 </template>
 
 <template name="period">

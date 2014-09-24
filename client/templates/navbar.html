@@ -19,7 +19,8 @@
               <li class="{{isActive 'tomorrow'}}"><a href="{{pathFor 'tomorrow'}}">Morgen</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-              <li><a class="logout">Abmelden</a></li>
+            <li class="{{isActive 'setClass'}}"><a href="{{pathFor 'setClass'}}">Klasse einstellen</a></li>
+            <li><a class="logout">Abmelden</a></li>
           </ul>
         </div>
       {{/if}}

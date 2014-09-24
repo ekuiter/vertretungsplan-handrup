@@ -6,5 +6,9 @@
   "moodlePassword": "password",
   "adminUsername": "username",
   "refreshInterval": 300,
+  "public": {
+    "grades": 12,
+    "classes": ["", "a", "b", "c", "d", "e", "f", "g", "(TG)"]
+  },
   "cordova": { }
 }

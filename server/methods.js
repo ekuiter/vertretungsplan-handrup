@@ -20,7 +20,7 @@ Meteor.methods({
       throw new Meteor.Error(401, "Please do not try to cheat. Thank you.");
     if (this.userId)
       throw new Meteor.Error(403, "Already logged in");
-    user = Users.findOne({ session: moodleSession });
+    var user = Users.findOne({ session: moodleSession });
     if (!user)
       throw new Meteor.Error(401, "Session invalid");
     this.setUserId(moodleSession);

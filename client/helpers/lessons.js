@@ -42,7 +42,7 @@ Template.lessons.tableSettings = function() {
   };
 };
 
-Template.lessons.klass = function() {
+Template.lessons.klass = Template.setClass.klass = function() {
   var user = Users.findOne();
   return user ? user.class : null;
 };
@@ -66,12 +66,6 @@ Template.lessons.events = {
       Session.set("activeLesson", null);
     else
       Session.set("activeLesson", Lessons.getIdentifier(this));
-  },
-
-  "submit form.class": function(e) {
-    e.preventDefault();
-    var klass = $("#class").val();
-    Meteor.call("setClass", klass);
   }
 };
 

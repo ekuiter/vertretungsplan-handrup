@@ -1,0 +1,25 @@
+<template name="setClass">
+  <h1>Klasse einstellen</h1>
+  <br />
+  <p>Trage deine Klasse hier ein, damit deine Vertretungsstunden bevorzugt angezeigt werden.</p>
+  <br />
+  <form class="class form-inline" role="form">
+    <div class="form-group">
+      <label for="grade">Jahrgang</label>
+      <select class="form-control" id="grade">
+        {{#each grades}}
+          <option {{gradeSelected}}>{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="grade">Klasse</label>
+      <select class="form-control" id="class">
+        {{#each classes}}
+          <option {{classSelected}}>{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Speichern" />
+  </form>
+</template>
