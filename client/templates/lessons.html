@@ -20,16 +20,20 @@
   </div>
   {{#if lessons.count}}
     {{#if showGrid}}
-      {{#if lessonsInClassOrGrade}}
+      {{#if lessonsConcerning}}
         <p>Betrifft Klasse <strong>{{klass}}</strong>:</p>
         <ul class="grid block-grid-xs-1 block-grid-sm-2 block-grid-md-3">
           {{> grid collection=lessonsInClass}}
           {{> grid collection=lessonsInGrade}}
         </ul>
       {{else}}
-        <p class="alert alert-danger">Keine Vertretungsstunden für Klasse <strong>{{klass}}</strong>.</p>
+        {{#if klass}}
+          <p class="alert alert-danger">Keine Vertretungsstunden für Klasse <strong>{{klass}}</strong>.</p>
+        {{/if}}
       {{/if}}
-      <p>Weitere Vertretungsstunden:</p>
+      {{#if klass}}
+          <p>Weitere Vertretungsstunden:</p>
+      {{/if}}
       <ul class="grid block-grid-xs-1 block-grid-sm-2 block-grid-md-3">
         {{> grid collection=otherLessons}}
       </ul>

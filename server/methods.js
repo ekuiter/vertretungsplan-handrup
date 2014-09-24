@@ -36,8 +36,6 @@ Meteor.methods({
   setClass: function(klass) {
     if (!this.userId)
       throw new Meteor.Error(403, "Not logged in");
-    if (!klass)
-      throw new Meteor.Error(401, "No class given");
     Users.update({ session: this.userId }, { $set: { class: klass } });
   }
 });

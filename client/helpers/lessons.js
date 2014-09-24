@@ -47,7 +47,7 @@ Template.lessons.klass = function() {
   return user ? user.class : null;
 };
 
-Template.lessons.lessonsInClassOrGrade = function() {
+Template.lessons.lessonsConcerning = function() {
   var data = Router.current().data();
   return data.lessonsInClass.count() || data.lessonsInGrade.count();
 };
