@@ -1,0 +1,10 @@
+{
+  "lessonsTodayUrl": "http://www.leoninum.org/moodle2/pluginfile.php/2270/mod_resource/content/3/LZ_heute.htm",
+  "lessonsTomorrowUrl": "http://www.leoninum.org/moodle2/pluginfile.php/4518/mod_resource/content/6/LZ_morgen.htm",
+  "moodleLoginUrl": "http://www.leoninum.org/moodle2/login/index.php",
+  "moodleUsername": "username",
+  "moodlePassword": "password",
+  "refreshEnabled": true,
+  "refreshInterval": 300,
+  "cordova": { }
+}

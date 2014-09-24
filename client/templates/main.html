@@ -1,0 +1,28 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vertretungsplan Handrup</title>
+  <script type="text/javascript" src="/assets/overthrow.min.js"></script>
+</head>
+
+<body>
+</body>
+
+<template name="layout">
+  {{> navbar}}
+  <div class="container">
+    {{#if disconnected}}
+      <div class="disconnected alert alert-danger">
+        Internetverbindung getrennt.
+        <button class="btn btn-default">
+          <span class="refresh"></span> <span class="hidden-xs">Neu verbinden</span>
+        </button>
+      </div>
+    {{/if}}
+    {{> yield}}
+  </div>
+</template>
+
+<template name="loading">
+  <h1>{{title}}</h1>
+</template>

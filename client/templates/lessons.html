@@ -1,0 +1,121 @@
+<template name="lessons">
+  <div class="heading row">
+    <div class="col-sm-7">
+      {{#if title}}
+        <h1>
+          {{title}}
+          <small>{{{date}}}</small>
+        </h1>
+      {{/if}}
+    </div>
+    <div class="col-sm-5">
+      {{#if lessons.count}}
+        <div class="btn-group">
+          <a class="btn btn-default" href="{{pathFor toggleLessonsPath}}">{{toggleLessons}}</a>
+          <button type="button" class="btn btn-default grid-btn">Übersicht</button>
+          <button type="button" class="btn btn-default table-btn">Tabelle</button>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+  {{#if lessons.count}}
+    {{#if showGrid}}
+      {{#if lessonsInClassOrGrade}}
+        <p>Betrifft Klasse <strong>{{klass}}</strong>:</p>
+        <ul class="grid block-grid-xs-1 block-grid-sm-2 block-grid-md-3">
+          {{> grid collection=lessonsInClass}}
+          {{> grid collection=lessonsInGrade}}
+        </ul>
+      {{else}}
+        <p class="alert alert-danger">Keine Vertretungsstunden für Klasse <strong>{{klass}}</strong>.</p>
+      {{/if}}
+      <p>Weitere Vertretungsstunden:</p>
+      <ul class="grid block-grid-xs-1 block-grid-sm-2 block-grid-md-3">
+        {{> grid collection=otherLessons}}
+      </ul>
+    {{else}}
+      <div class="table-responsive overthrow">
+        {{> reactiveTable collection=lessons settings=tableSettings}}
+      </div>
+    {{/if}}
+    <p class="updated">
+      Zuletzt aktualisiert: <strong>{{updated}}</strong>
+    </p>
+  {{else}}
+    <h3>Für diesen Tag gibt es (noch) keine Vertretungsstunden.</h3>
+  {{/if}}
+  <hr />
+  <p>
+    Gib deine Klasse hier ein, damit deine Vertretungsstunden bevorzugt angezeigt werden.
+  </p>
+  <form class="class form-inline" role="form">
+    <div class="form-group">
+      <input type="text" class="form-control" id="class" value="{{klass}}" placeholder="Klasse">
+    </div>
+    <input type="submit" class="btn btn-primary" value="Speichern" />
+  </form>
+  <p></p>
+</template>
+
+<template name="period">
+  <strong>{{period}}</strong>
+</template>
+
+<template name="class">
+  <strong>{{class}}</strong>
+</template>
+
+<template name="grid">
+  {{#each collection}}
+    <li class="block-grid-item">
+      <div class="lesson panel {{panelStyle}}">
+        <div class="panel-heading">
+          <table>
+            <tbody>
+            <tr>
+              <td>{{> period}}. Stunde</td>
+              <td>Klasse {{> class}}</td>
+              <td>Lehrer: <strong>{{absent}}</strong></td>
+              <td><div class="disclosure"></div></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        {{#if isActive}}
+          <div class="panel-body">
+            <table>
+              <tbody>
+              <tr>
+                <td class="wide">
+                  {{#if substitute}}
+                    Vertretung: <strong>{{substitute}}</strong>
+                  {{else}}
+                    <strong>{{notice}}</strong>
+                  {{/if}}
+                </td>
+                <td>
+                  {{#if subject}}
+                    Fach: {{subject}}
+                  {{/if}}
+                </td>
+              </tr>
+              <tr>
+                <td class="wide">
+                  {{#if substitute}}
+                    <strong>{{notice}}</strong>
+                  {{/if}}
+                </td>
+                <td>
+                  {{#if room}}
+                    Raum: {{room}}
+                  {{/if}}
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        {{/if}}
+      </div>
+    </li>
+  {{/each}}
+</template>

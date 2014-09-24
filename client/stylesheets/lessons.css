@@ -1,0 +1,100 @@
+h1 {
+  margin-top: -5px;
+}
+
+h1 small {
+  margin-left: 10px;
+}
+
+.heading .btn-group {
+  margin-bottom: 20px;
+}
+
+.heading .grid-btn {
+  padding-left: 35px;
+  background: url(/assets/grid.png) no-repeat 10px 8px;
+}
+
+.heading .table-btn {
+  padding-left: 35px;
+  background: url(/assets/table.png) no-repeat 10px 8px;
+}
+
+@media(min-width: 768px) {
+  h1 {
+    margin-top: 5px;
+  }
+
+  .heading .btn-group {
+    margin-top: 10px;
+    float: right;
+  }
+}
+
+.grid {
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.grid .block-grid-item {
+  padding: 5px 15px;
+}
+
+.grid .panel {
+  margin: 0;
+  cursor: pointer;
+}
+
+.grid .panel-heading, .grid .panel-body {
+  padding: 8px;
+}
+
+.grid table {
+  width: 100%;
+}
+
+.grid .panel-default .panel-heading, .grid .panel-danger .panel-heading {
+  border-bottom: none;
+}
+
+.grid .panel-default .panel-heading {
+  border-bottom: none;
+  background-color: #fafafa;
+}
+
+.grid .panel-heading td {
+  width: 33%;
+}
+
+.grid .disclosure {
+  width: 16px;
+  height: 16px;
+  background: url(/assets/disclosure.png) no-repeat 0 0;
+}
+
+.grid .panel-primary .disclosure {
+  background-position: 0 -16px;
+}
+
+.grid .panel-body td {
+  width: 33%;
+}
+
+.grid .panel-body td.wide {
+  width: 66%;
+}
+
+p.updated {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.reactive-table .danger {
+  font-weight: bold;
+  border: 1px solid #cdafaf;
+}
+
+.reactive-table .danger td {
+  border-top: 1px solid #cdafaf;
+  border-bottom: 1px solid #cdafaf;
+}
