@@ -84,5 +84,5 @@ Template.grid.panelStyle = function() {
   var activeStyle = "panel-primary";
   if (Lessons.isConcerning(this))
     defaultStyle = activeStyle = "panel-danger";
-  return Template.grid.isActive.apply(this) ? activeStyle : defaultStyle;
+  return Template.grid.isActive.apply(this) ? (activeStyle + " active") : defaultStyle;
 };

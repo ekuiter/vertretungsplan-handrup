@@ -72,8 +72,16 @@ h1 small {
   background: url(/assets/disclosure.png) no-repeat 0 0;
 }
 
-.grid .panel-primary .disclosure {
+.grid .panel-danger.active .disclosure {
   background-position: 0 -16px;
+}
+
+.grid .panel-danger.active {
+  border-color: #906161;
+}
+
+.grid .panel-primary.active .disclosure {
+  background-position: 0 -32px;
 }
 
 .grid .panel-body td {
