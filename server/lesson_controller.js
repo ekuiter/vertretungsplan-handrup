@@ -133,4 +133,22 @@ LessonController.refreshLessons = function(lessonsType, lessonsUrl) {
 LessonController.refreshAllLessons = function() {
   LessonController.refreshLessons("today", Meteor.settings.lessonsTodayUrl);
   LessonController.refreshLessons("tomorrow", Meteor.settings.lessonsTomorrowUrl);
+  LessonController._timeout = Meteor.setTimeout(
+    LessonController.refreshAllLessons,
+    Meteor.settings.refreshInterval * 1000
+  );
+};
+
+LessonController.startScheduling = function() {
+  LessonController.stopScheduling();
+  LessonController._timeout = Meteor.setTimeout(LessonController.refreshAllLessons, 0);
+  console.log("Refreshing enabled.");
+};
+
+LessonController.stopScheduling = function() {
+  if (LessonController._timeout) {
+    Meteor.clearTimeout(LessonController._timeout);
+    LessonController._timeout = null;
+    console.log("Refreshing disabled.");
+  }
 };
