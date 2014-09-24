@@ -53,9 +53,9 @@ LessonController._getLessonsHtml = function(lessonsUrl, moodleSession) {
     },
     followRedirect: false
   }, function(err, res, buffer) {
-    if (res.statusCode === 303) {
+    if (err || res.statusCode === 303)
       future["return"](null);
-    } else {
+    else {
       // make the latin1 buffer a utf8 buffer and then a string
       var html = encoding.convert(buffer, "utf-8", "iso-8859-1").toString();
       future["return"](html);
