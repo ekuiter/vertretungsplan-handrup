@@ -73,8 +73,8 @@ LessonController._processLessonsHtml = function(lessonsType, lessonsHtml) {
   updated = new Date(updated.replace(/^(.*)(\d{2})\.(\d{2})\.(\d{4})(.*)(\d{2}):(\d{2})(.*)$/, "$4-$3-$2 $6:$7 +0200"));
   var lastUpdated = LessonsUpdated.getProperty(lessonsType, "updated");
   if (lastUpdated && lastUpdated.getTime() === updated.getTime()) {
-    console.log("No refresh needed. (Last updated: " + updated.toDateString() +
-      " " + updated.getHours() + ":" + updated.getMinutes() + ")");
+    console.log("No refresh needed. Last updated: " + date.getDate() + "." + (date.getMonth() + 1) +
+      ". " + updated.getHours() + ":" + updated.getMinutes());
   } else {
     LessonsUpdated.set(lessonsType, date, updated);
     Lessons.remove({ type: lessonsType });
