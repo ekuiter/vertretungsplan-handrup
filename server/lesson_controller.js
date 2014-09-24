@@ -37,10 +37,10 @@ LessonController._fetchMoodleSession = function() {
 
 LessonController._getMoodleSession = function(fetch) {
   var self = this;
-  if (!fetch && Meteor.settings.moodleSession)
-    return Meteor.settings.moodleSession;
+  if (!fetch && self._moodleSession)
+    return self._moodleSession;
   else
-    return Meteor.settings.moodleSession = self._fetchMoodleSession();
+    return self._moodleSession = self._fetchMoodleSession();
 };
 
 LessonController._getLessonsHtml = function(lessonsUrl, moodleSession) {
