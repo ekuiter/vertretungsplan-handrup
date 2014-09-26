@@ -70,7 +70,7 @@ Template.lessons.events = {
 };
 
 Template.grid.isActive = function() {
-  return Session.get("activeLesson") == Lessons.getIdentifier(this);
+  return Session.equals("activeLesson", Lessons.getIdentifier(this));
 };
 
 Template.grid.panelStyle = function() {
