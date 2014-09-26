@@ -9,13 +9,13 @@
       {{/if}}
     </div>
     <div class="col-sm-5">
-      {{#if lessons.count}}
-        <div class="btn-group">
-          <a class="btn btn-default" href="{{pathFor toggleLessonsPath}}">{{toggleLessons}}</a>
+      <div class="btn-group">
+        <a class="btn btn-default" href="{{pathFor toggleLessonsPath}}">{{toggleLessons}}</a>
+        {{#if lessons.count}}
           <button type="button" class="btn btn-default grid-btn">Übersicht</button>
           <button type="button" class="btn btn-default table-btn">Tabelle</button>
-        </div>
-      {{/if}}
+        {{/if}}
+      </div>
     </div>
   </div>
   {{#if lessons.count}}
@@ -34,7 +34,7 @@
         {{/if}}
       {{/if}}
       {{#if klass}}
-          <p>Weitere Vertretungsstunden:</p>
+        <p>Weitere Vertretungsstunden:</p>
       {{/if}}
       <ul class="grid block-grid-xs-1 block-grid-sm-2 block-grid-md-3">
         {{> grid collection=otherLessons}}
@@ -81,7 +81,9 @@
               <td>{{> period}}. Stunde</td>
               <td>Klasse {{> class}}</td>
               <td>Lehrer: <strong>{{absent}}</strong></td>
-              <td><div class="disclosure"></div></td>
+              <td>
+                <div class="disclosure"></div>
+              </td>
             </tr>
             </tbody>
           </table>
