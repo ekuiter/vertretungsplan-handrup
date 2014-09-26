@@ -1,5 +1,5 @@
 Meteor.startup(function() {
-  Users.tryToLoginWithMoodleSession();
+  Users.tryToLoginWithMoodleSession(true);
 
   Meteor.connection.onReconnect = function() {
     Users.tryToLoginWithMoodleSession();
