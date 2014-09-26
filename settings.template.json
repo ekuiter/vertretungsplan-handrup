@@ -10,5 +10,9 @@
     "grades": 12,
     "classes": ["", "a", "b", "c", "d", "e", "f", "g", "(TG)"]
   },
+  "kadira": {
+    "appId": "appId",
+    "appSecret": "appSecret"
+  },
   "cordova": { }
 }
