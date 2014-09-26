@@ -18,3 +18,7 @@ a {
 .disconnected button .hidden-xs {
   margin-left: 10px;
 }
+
+img.loading {
+  margin-top: -5px;
+}
