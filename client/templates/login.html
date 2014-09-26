@@ -1,9 +1,9 @@
 <template name="login">
   <h1>Anmelden</h1>
   <p>Melde dich mit deinen Schulzugangsdaten an, um den Vertretungsplan zu sehen.</p>
-  {{#if loginFailed}}
+  {{#if errorMessage}}
     <div class="alert alert-danger">
-      Benutzername oder Passwort falsch.
+      {{errorMessage}}
     </div>
   {{/if}}
   <form class="login form-horizontal col-sm-8 col-md-6" role="form">
