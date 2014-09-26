@@ -11,18 +11,22 @@
 <template name="layout">
   {{> navbar}}
   <div class="container">
-    {{#if disconnected}}
-      <div class="disconnected alert alert-danger">
-        Internetverbindung getrennt.
-        <button class="btn btn-default">
-          <span class="refresh"></span> <span class="hidden-xs">Neu verbinden</span>
-        </button>
-      </div>
-    {{/if}}
+    {{> yield "disconnected"}}
     {{> yield}}
   </div>
 </template>
 
 <template name="loading">
   <h1>{{title}}</h1>
+</template>
+
+<template name="disconnected">
+  {{#if isDisconnected}}
+    <div class="disconnected alert alert-danger">
+      Internetverbindung getrennt.
+      <button class="btn btn-default">
+        <span class="refresh"></span> <span class="hidden-xs">Neu verbinden</span>
+      </button>
+    </div>
+  {{/if}}
 </template>
