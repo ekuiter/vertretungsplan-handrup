@@ -3,7 +3,7 @@ Template.navbar.isActive = function(routeName) {
 };
 
 Template.navbar.isLoggedIn = function() {
-  return Session.get("loggedIn");
+  return Users.loggedIn();
 };
 
 Template.navbar.events({
