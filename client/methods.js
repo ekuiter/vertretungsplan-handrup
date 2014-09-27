@@ -1,9 +1,9 @@
 Meteor.methods({
   logout: function() {
-    Users.update({ session: Users.getMoodleSession() }, { $unset: { session: true } });
+    Users.update({ }, { $unset: { session: true } });
   },
 
   setClass: function(klass) {
-    Users.update({ session: Users.getMoodleSession() }, { $set: { class: klass } });
+    Users.update({ }, { $set: { class: klass } });
   }
 });
