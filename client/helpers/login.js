@@ -4,10 +4,15 @@ Template.login.errorMessage = function() {
 
 Template.login.loginFailedStyle = function() {
   return Session.get("errorMessage") ? "has-error" : "";
-}
+};
+
+Template.login.loggingIn = function() {
+  return Session.get("loggingIn");
+};
 
 Template.login.events({
   "submit form.login": function(e) {
+    Session.set("loggingIn", true);
     e.preventDefault();
     var username = $("#username").val();
     var password = $("#password").val();
@@ -21,6 +26,7 @@ Template.login.events({
         Session.set("errorMessage", null);
         Users.setMoodleSession(res);
       }
+      Session.set("loggingIn", false);
     });
   }
 });

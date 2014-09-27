@@ -1,5 +1,12 @@
 <template name="login">
-  <h1>Anmelden</h1>
+  <h1>
+    Anmelden
+    {{#if loggingIn}}
+      <small class="loading">
+        Laden ...
+      </small>
+    {{/if}}
+  </h1>
   <p>Melde dich mit deinen Schulzugangsdaten an, um den Vertretungsplan zu sehen.</p>
   {{#if errorMessage}}
     <div class="alert alert-danger">
