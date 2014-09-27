@@ -1,0 +1,4 @@
+.meteor
+keystore.*
+packages
+settings.json
