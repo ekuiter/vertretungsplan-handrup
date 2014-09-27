@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.ek.vertretungsplan-handrup" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>Vertretungsplan Handrup</name>
+  <description>
+    Der Vertretungsplan des Gymnasium Leoninum Handrup.
+  </description>
+  <author email="info@elias-kuiter.de" href="http://elias-kuiter.de">
+    Elias Kuiter
+  </author>
+  <content src="index.html" />
+  <access origin="*" />
+  <icon src="www/res/icon.png" />
+  <platform name="android">
+    <icon src="www/res/icon.png" density="ldpi" />
+    <icon src="www/res/icon.png" density="mdpi" />
+    <icon src="www/res/icon.png" density="hdpi" />
+    <icon src="www/res/icon.png" density="xhdpi" />
+  </platform>
+  <preference name="SplashScreen" value="splash" />
+  <preference name="SplashScreenDelay" value="600000" />
+</widget>
