@@ -8,9 +8,18 @@ Meteor.methods({
       if (user.session) {
         moodleSession = user.session;
       } else
-        Users.update(user._id, { $set: { session: moodleSession } });
+        Users.update(user._id, { $set: {
+          session: moodleSession,
+          loggedIn: new Date(),
+          admin: user.username === Meteor.settings.adminUsername
+        } });
     } else
-      Users.insert({ username: username, session: moodleSession });
+      Users.insert({
+        username: username,
+        session: moodleSession,
+        loggedIn: new Date(),
+        admin: username === Meteor.settings.adminUsername
+      });
     this.setUserId(moodleSession);
     return moodleSession;
   },
@@ -42,7 +51,7 @@ Meteor.methods({
   refresh: function(enabled) {
     if (!this.userId)
       throw new Meteor.Error(403, "Not logged in");
-    if (!Users.findOne({ session: this.userId, username: Meteor.settings.adminUsername }))
+    if (!Users.findOne({ session: this.userId, admin: true }))
       throw new Meteor.Error(403, "Admin required");
     if (enabled === undefined)
       enabled = true;
@@ -50,5 +59,13 @@ Meteor.methods({
       LessonController.startScheduling();
     else
       LessonController.stopScheduling();
+  },
+
+  getUsers: function() {
+    if (!this.userId)
+      throw new Meteor.Error(403, "Not logged in");
+    if (!Users.findOne({ session: this.userId, admin: true }))
+      throw new Meteor.Error(403, "Admin required");
+    return Users.find().fetch();
   }
 });

@@ -1,3 +1,7 @@
+body {
+  padding-bottom: 20px;
+}
+
 a {
   cursor: pointer;
 }
@@ -6,7 +10,7 @@ a {
   margin-left: 10px;
 }
 
-.disconnected button .refresh {
+ button .refresh {
   display: block;
   float: left;
   width: 16px;

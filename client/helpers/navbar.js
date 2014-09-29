@@ -6,6 +6,10 @@ Template.navbar.isLoggedIn = function() {
   return Users.loggedIn();
 };
 
+Template.navbar.isAdmin = function() {
+  return Users.isAdmin();
+};
+
 Template.navbar.events({
   "click .logout": function() {
     Users.logout();

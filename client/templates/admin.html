@@ -1,0 +1,37 @@
+<template name="admin">
+  {{#if isAdmin}}
+    <h2>
+      Vertretung
+      <button class="btn btn-default margin-left lessons">
+        <span class="refresh"></span>
+      </button>
+      <button class="btn btn-default margin-left lessons-stop">
+        x
+      </button>
+    </h2>
+    <p>Den Vertretungsplan neu vom Schulserver laden bzw. das automatische Laden ein-/ausschalten.</p>
+    <h2>
+      Benutzer
+      <button class="btn btn-default margin-left users">
+        <span class="refresh"></span>
+      </button>
+    </h2>
+    <div class="table-responsive overthrow">
+      {{> reactiveTable collection=users settings=tableSettings}}
+    </div>
+  {{/if}}
+</template>
+
+<template name="username">
+  <strong>{{username}}</strong>
+</template>
+
+<template name="loggedIn">
+  {{loggedInHelper}}
+</template>
+
+<template name="adminColumn">
+  {{#if admin}}
+    Ja
+  {{/if}}
+</template>

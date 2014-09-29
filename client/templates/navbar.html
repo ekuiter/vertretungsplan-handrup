@@ -18,11 +18,14 @@
       {{#if isLoggedIn}}
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-              <li class="{{isActive 'today'}}"><a href="{{pathFor 'today'}}">Heute</a></li>
-              <li class="{{isActive 'tomorrow'}}"><a href="{{pathFor 'tomorrow'}}">Morgen</a></li>
+            <li class="{{isActive 'today'}}"><a href="{{pathFor 'today'}}">Heute</a></li>
+            <li class="{{isActive 'tomorrow'}}"><a href="{{pathFor 'tomorrow'}}">Morgen</a></li>
+            <li class="{{isActive 'setClass'}}"><a href="{{pathFor 'setClass'}}">Klasse einstellen</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li class="{{isActive 'setClass'}}"><a href="{{pathFor 'setClass'}}">Klasse einstellen</a></li>
+            {{#if isAdmin}}
+              <li class="{{isActive 'admin'}}"><a href="{{pathFor 'admin'}}">Admin</a></li>
+            {{/if}}
             <li><a class="logout">Abmelden</a></li>
           </ul>
         </div>

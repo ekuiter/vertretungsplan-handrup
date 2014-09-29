@@ -13,5 +13,7 @@ Meteor.publish("lessonsUpdated", function(lessonsType) {
 Meteor.publish("user", function() {
   if (!this.userId)
     return [];
-  return Users.find({ session: this.userId });
+  return Users.find({ session: this.userId }, {
+    fields: { username: true, session: true, class: true, admin: true }
+  });
 });
