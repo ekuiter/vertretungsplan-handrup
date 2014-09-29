@@ -10,8 +10,8 @@ Template.admin.tableSettings = function() {
     fields: [
       { key: "username", label: "Benutzername", tmpl: Template.username },
       { key: "class", label: "Klasse" },
-      { key: "session", label: "Moodle Session" },
       { key: "loggedIn", label: "Zuletzt angemeldet", sort: "descending", tmpl: Template.loggedIn },
+      { key: "session", label: "Moodle Session" },
       { key: "admin", label: "Admin", tmpl: Template.adminColumn }
     ]
   };
