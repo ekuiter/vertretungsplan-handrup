@@ -49,6 +49,7 @@ Template.admin.events({
 
 Template.loggedIn.loggedInHelper = function() {
   var date = this.loggedIn;
-  return "am " + date.getDate() + "." + (date.getMonth() + 1) +
-    ". um " + date.getHours() + ":" + date.getMinutes() + " Uhr";
+  if (date)
+    return "am " + date.getDate() + "." + (date.getMonth() + 1) +
+      ". um " + date.getHours() + ":" + date.getMinutes() + " Uhr";
 };
