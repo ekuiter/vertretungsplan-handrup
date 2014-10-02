@@ -1,3 +1,11 @@
 .big {
   font-size: 1.5em;
 }
+
+.donate {
+  margin-left: 10px;
+}
+
+.donate img {
+  margin-top: -5px;
+}
