@@ -10,6 +10,10 @@ Template.login.loggingIn = function() {
   return Session.get("loggingIn");
 };
 
+Template.login.isTryingToLogin = function() {
+  return Session.get("tryingToLogin");
+};
+
 Template.login.events({
   "submit form.login": function(e) {
     Session.set("loggingIn", true);

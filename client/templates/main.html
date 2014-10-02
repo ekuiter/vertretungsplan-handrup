@@ -23,6 +23,7 @@
       Laden ...
     </small>
   </h1>
+  {{> tryingToLogin}}
 </template>
 
 <template name="disconnected">
@@ -32,6 +33,14 @@
       <button class="btn btn-default">
         <span class="refresh"></span> <span class="hidden-xs">Neu verbinden</span>
       </button>
+    </div>
+  {{/if}}
+</template>
+
+<template name="tryingToLogin">
+  {{#if isTryingToLogin}}
+    <div class="alert alert-info">
+      Anmeldung läuft ...
     </div>
   {{/if}}
 </template>
