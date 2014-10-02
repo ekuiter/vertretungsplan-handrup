@@ -1,16 +1,20 @@
 Meteor.startup(function() {
   if (Meteor.isCordova) {
     document.addEventListener("deviceready", function() {
-      navigator.splashscreen.hide();
-
-      document.addEventListener("backbutton", function() {
+      var overrideBackButton = function() {
         if (Router.current().route.name === "today")
           navigator.app.exitApp();
         else
           navigator.app.backHistory();
-      }, false);
+      };
 
-      Cordova.writeFile = function(directoryPath, fileName, content, cb) {
+      var overrideLinks = function(e) {
+        var url = $(this).attr("href");
+        navigator.app.loadUrl(url, { openExternal: true });
+        e.preventDefault();
+      };
+
+      var writeFile = function(directoryPath, fileName, content, cb) {
         var fail = function(err) {
           cb(new Error("Failed to write file: ", err), null);
         };
@@ -30,16 +34,16 @@ Meteor.startup(function() {
           }, fail);
       };
 
-      Cordova.readFile = function (directoryPath, fileName, cb) {
-        var fail = function (err) {
+      var readFile = function(directoryPath, fileName, cb) {
+        var fail = function(err) {
           cb(new Error("Failed to read file: ", err), null);
         };
         window.resolveLocalFileSystemURL(directoryPath,
-          function (dirEntry) {
-            var success = function (fileEntry) {
-              fileEntry.file(function (file) {
+          function(dirEntry) {
+            var success = function(fileEntry) {
+              fileEntry.file(function(file) {
                 var reader = new FileReader();
-                reader.onloadend = function (evt) {
+                reader.onloadend = function(evt) {
                   cb(null, evt.target.result);
                 };
                 reader.readAsText(file);
@@ -48,6 +52,20 @@ Meteor.startup(function() {
             dirEntry.getFile(fileName, { create: true, exclusive: false }, success, fail);
           }, fail);
       };
+
+      var disableHotCodePush = function() {
+        var autoupdateSubscriptions = _.filter(Meteor.connection._subscriptions, function(subscription) {
+          return subscription.name === "meteor_autoupdate_clientVersions";
+        });
+        autoupdateSubscriptions[0].stop();
+      };
+
+      navigator.splashscreen.hide();
+      document.addEventListener("backbutton", overrideBackButton, false);
+      $(document).on("click", 'a[href^="http"]', overrideLinks);
+      Cordova.writeFile = writeFile;
+      Cordova.readFile = readFile;
+      disableHotCodePush();
     }, false);
   }
 });
