@@ -20,9 +20,13 @@ LessonController.moodleLogin = function(username, password) {
     else if (res.headers.location === Meteor.settings.moodleLoginUrl)
       future["return"]({ error: new Meteor.Error(401, "Username or password invalid") });
     else {
-      var moodleSession = res.headers["set-cookie"][0].replace("MoodleSession=", "").split(";")[0];
-      console.log("Moodle session (" + username + "): " + moodleSession);
-      future["return"]({ session: moodleSession });
+      try {
+        var moodleSession = res.headers["set-cookie"][0].replace("MoodleSession=", "").split(";")[0];
+        console.log("Moodle session (" + username + "): " + moodleSession);
+        future["return"]({ session: moodleSession });
+      } catch (e) {
+        future["return"]({ error: new Meteor.Error(500, "Server response faulty") });
+      }
     }
   });
   moodleSession = future.wait();
