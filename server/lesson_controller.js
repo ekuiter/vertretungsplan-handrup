@@ -140,6 +140,10 @@ LessonController.refreshAllLessons = function() {
 };
 
 LessonController.startScheduling = function() {
+  if (Meteor.settings.public.disabled) {
+    console.log("App is currently disabled.");
+    return;
+  }
   LessonController.stopScheduling();
   LessonController.refreshAllLessons();
   LessonController._interval = Meteor.setInterval(LessonController.refreshAllLessons, Meteor.settings.refreshInterval * 1000);

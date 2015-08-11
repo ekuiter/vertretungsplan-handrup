@@ -7,6 +7,7 @@
   "adminUsername": "username",
   "refreshInterval": 300,
   "public": {
+    "disabled": false,
     "grades": 12,
     "classes": ["", "a", "b", "c", "d", "e", "f", "g", "(TG)"]
   },
